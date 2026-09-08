@@ -2,353 +2,564 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>PREMA</title>
+<title>Sorry Prema 🥺</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Georgia, "Times New Roman", serif;
 }
 
 body{
-    overflow:hidden;
-    height:100vh;
     background:
-        radial-gradient(circle at 50% 45%, #162b2b 0%, #071313 45%, #020606 100%);
-    font-family:Georgia, serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
+      radial-gradient(circle at 50% 20%, rgba(255,180,210,.18), transparent 30%),
+      linear-gradient(180deg,#10152d 0%,#20244b 42%,#302d50 70%,#17251f 100%);
 }
 
-/* Stars */
+/* ================= SKY ================= */
+
+.scene{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+/* moon */
+
+.moon{
+    position:absolute;
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    right:11%;
+    top:8%;
+    background:#fff5d6;
+    box-shadow:
+      0 0 20px rgba(255,245,214,.7),
+      0 0 70px rgba(255,220,180,.25);
+}
+
+.moon:after{
+    content:"";
+    position:absolute;
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    left:-18px;
+    top:-8px;
+    background:#151a36;
+}
+
+/* stars */
 
 .stars{
-    position:fixed;
+    position:absolute;
     inset:0;
     pointer-events:none;
 }
 
 .star{
     position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
+    width:3px;
+    height:3px;
+    background:#fff;
     border-radius:50%;
-    opacity:.6;
-    animation:twinkle 3s infinite alternate;
+    box-shadow:0 0 8px white;
+    animation:twinkle 2s infinite alternate;
 }
 
 @keyframes twinkle{
-    from{opacity:.15; transform:scale(.7)}
-    to{opacity:1; transform:scale(1.4)}
+    from{opacity:.25;transform:scale(.7)}
+    to{opacity:1;transform:scale(1.5)}
 }
 
-/* Main scene */
-
-.scene{
-    position:relative;
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-/* Ground */
+/* ================= GROUND ================= */
 
 .ground{
     position:absolute;
-    bottom:-110px;
-    width:500px;
-    height:220px;
-    background:radial-gradient(ellipse,#142b24 0%,transparent 70%);
-    filter:blur(8px);
+    bottom:-18%;
+    left:-10%;
+    width:120%;
+    height:48%;
+    background:
+      radial-gradient(ellipse at center,
+      #34583c 0%,
+      #213d2c 45%,
+      #12271d 80%);
+    border-radius:50% 50% 0 0;
+    box-shadow:0 -20px 50px rgba(0,0,0,.25);
 }
 
-/* Tree */
+/* grass */
+
+.grass{
+    position:absolute;
+    bottom:10%;
+    width:100%;
+    height:100px;
+    pointer-events:none;
+}
+
+.blade{
+    position:absolute;
+    bottom:0;
+    width:2px;
+    height:25px;
+    background:#4f8652;
+    transform-origin:bottom;
+    animation:grassMove 2s ease-in-out infinite alternate;
+}
+
+@keyframes grassMove{
+    from{transform:rotate(-7deg)}
+    to{transform:rotate(8deg)}
+}
+
+/* ================= TREE ================= */
 
 .tree{
     position:absolute;
-    bottom:80px;
-    width:330px;
-    height:570px;
+    left:50%;
+    bottom:11%;
+    width:500px;
+    height:650px;
+    transform:translateX(-50%);
+    cursor:pointer;
+    z-index:10;
 }
-
-/* Trunk */
 
 .trunk{
     position:absolute;
     bottom:0;
-    left:50%;
+    left:47%;
+    width:62px;
+    height:390px;
     transform:translateX(-50%);
-    width:55px;
-    height:370px;
     background:
-        linear-gradient(90deg,
-        #21130e,
-        #4a2919,
-        #70422a,
-        #351d13,
-        #1b100c);
-    border-radius:45% 55% 15% 15%;
-    box-shadow:
-        0 0 25px rgba(120,75,40,.35);
+      linear-gradient(90deg,
+      #3c211a,
+      #68402d 35%,
+      #7a4d33 55%,
+      #3a211a);
+    border-radius:40px 40px 10px 10px;
+    box-shadow:8px 0 15px rgba(0,0,0,.25);
 }
 
-/* Branches */
+.trunk:before,
+.trunk:after{
+    content:"";
+    position:absolute;
+    background:#4b2b20;
+    border-radius:50%;
+}
+
+.trunk:before{
+    width:25px;
+    height:250px;
+    left:-100px;
+    bottom:70px;
+    transform:rotate(52deg);
+}
+
+.trunk:after{
+    width:24px;
+    height:270px;
+    right:-100px;
+    bottom:100px;
+    transform:rotate(-52deg);
+}
+
+/* branches */
 
 .branch{
     position:absolute;
-    height:18px;
-    background:#412619;
+    height:28px;
+    background:#513022;
     border-radius:30px;
     transform-origin:left center;
 }
 
 .b1{
-    width:170px;
-    left:150px;
-    bottom:275px;
-    transform:rotate(-32deg);
+    width:260px;
+    left:45%;
+    bottom:285px;
+    transform:rotate(-25deg);
 }
 
 .b2{
-    width:150px;
-    left:150px;
-    bottom:225px;
-    transform:rotate(28deg);
+    width:245px;
+    left:48%;
+    bottom:330px;
+    transform:rotate(27deg);
 }
 
 .b3{
-    width:125px;
-    left:115px;
-    bottom:315px;
-    transform:rotate(-58deg);
+    width:210px;
+    left:44%;
+    bottom:390px;
+    transform:rotate(-42deg);
 }
 
 .b4{
-    width:130px;
-    left:75px;
-    bottom:250px;
-    transform:rotate(145deg);
+    width:210px;
+    left:48%;
+    bottom:415px;
+    transform:rotate(40deg);
 }
 
-.b5{
-    width:115px;
-    left:165px;
-    bottom:180px;
-    transform:rotate(-15deg);
-}
-
-/* Tree crown */
+/* ================= SAKURA CROWN ================= */
 
 .crown{
     position:absolute;
-    left:50%;
-    top:25px;
-    transform:translateX(-50%);
-    width:330px;
-    height:310px;
-}
-
-/* Leaves */
-
-.leaf{
-    position:absolute;
-    width:42px;
-    height:23px;
-    border-radius:100% 0 100% 0;
-    background:linear-gradient(135deg,#315d48,#75a96e);
-    transform:rotate(45deg);
-    box-shadow:
-        0 0 12px rgba(116,190,130,.25);
-    transition:1s;
-}
-
-.leaf:nth-child(1){left:135px;top:10px}
-.leaf:nth-child(2){left:90px;top:30px;transform:rotate(10deg)}
-.leaf:nth-child(3){left:180px;top:35px;transform:rotate(75deg)}
-.leaf:nth-child(4){left:45px;top:75px;transform:rotate(25deg)}
-.leaf:nth-child(5){left:130px;top:65px;transform:rotate(70deg)}
-.leaf:nth-child(6){left:220px;top:80px;transform:rotate(15deg)}
-.leaf:nth-child(7){left:15px;top:125px;transform:rotate(70deg)}
-.leaf:nth-child(8){left:75px;top:120px;transform:rotate(5deg)}
-.leaf:nth-child(9){left:160px;top:115px;transform:rotate(50deg)}
-.leaf:nth-child(10){left:245px;top:135px;transform:rotate(90deg)}
-.leaf:nth-child(11){left:45px;top:175px;transform:rotate(10deg)}
-.leaf:nth-child(12){left:115px;top:175px;transform:rotate(75deg)}
-.leaf:nth-child(13){left:195px;top:175px;transform:rotate(15deg)}
-.leaf:nth-child(14){left:270px;top:185px;transform:rotate(65deg)}
-.leaf:nth-child(15){left:85px;top:225px;transform:rotate(35deg)}
-.leaf:nth-child(16){left:155px;top:230px;transform:rotate(80deg)}
-.leaf:nth-child(17){left:225px;top:220px;transform:rotate(25deg)}
-.leaf:nth-child(18){left:125px;top:270px;transform:rotate(30deg)}
-.leaf:nth-child(19){left:195px;top:270px;transform:rotate(75deg)}
-
-/* Button */
-
-button{
-    position:absolute;
-    bottom:35px;
+    width:500px;
+    height:410px;
+    top:0;
     left:50%;
     transform:translateX(-50%);
-    padding:15px 38px;
-    border:none;
-    border-radius:50px;
-    background:rgba(255,255,255,.08);
-    color:white;
-    border:1px solid rgba(255,255,255,.3);
-    backdrop-filter:blur(12px);
-    font-size:15px;
-    letter-spacing:3px;
-    cursor:pointer;
-    box-shadow:
-        0 0 25px rgba(130,255,180,.12);
-    transition:.4s;
 }
 
-button:hover{
-    background:rgba(255,255,255,.15);
-    box-shadow:
-        0 0 35px rgba(130,255,180,.3);
-    transform:translateX(-50%) scale(1.05);
+.blossom{
+    position:absolute;
+    width:145px;
+    height:115px;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 30% 30%,#fff2fa 0 12%,transparent 13%),
+      radial-gradient(circle at 70% 30%,#ffd5e9 0 13%,transparent 14%),
+      radial-gradient(circle at 35% 70%,#ffc3df 0 14%,transparent 15%),
+      radial-gradient(circle at 70% 70%,#ffb4d6 0 12%,transparent 13%),
+      #e995bc;
+    filter:drop-shadow(0 10px 12px rgba(0,0,0,.2));
+    animation:softFloat 4s ease-in-out infinite;
 }
 
-/* Falling leaves */
+.blossom:after{
+    content:"✿";
+    position:absolute;
+    color:#b75d83;
+    font-size:27px;
+    left:53px;
+    top:39px;
+    text-shadow:0 0 8px #fff;
+}
 
-.falling{
-    position:fixed;
-    width:18px;
-    height:10px;
-    border-radius:100% 0 100% 0;
-    background:linear-gradient(135deg,#719f63,#b0d98a);
+@keyframes softFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-7px)}
+}
+
+.flower1{left:10px;top:80px}
+.flower2{left:125px;top:20px;transform:scale(1.15)}
+.flower3{left:260px;top:65px}
+.flower4{right:-5px;top:25px;transform:scale(1.1)}
+.flower5{left:75px;top:170px}
+.flower6{left:215px;top:145px;transform:scale(1.15)}
+.flower7{right:30px;top:170px}
+.flower8{left:175px;top:240px}
+
+/* ================= FALLING PETALS ================= */
+
+.petals{
+    position:absolute;
+    inset:0;
     pointer-events:none;
+    z-index:30;
+}
+
+.petal{
+    position:absolute;
+    top:-30px;
+    width:15px;
+    height:9px;
+    border-radius:100% 0 100% 0;
+    background:#ffb7d5;
+    opacity:.9;
     animation:fall linear forwards;
-    z-index:10;
-    box-shadow:0 0 10px rgba(140,220,150,.35);
+    box-shadow:0 0 8px rgba(255,180,215,.5);
 }
 
 @keyframes fall{
     0%{
-        transform:
-            translate(0,0)
-            rotate(0deg)
-            scale(1);
-        opacity:1;
-    }
-
-    25%{
-        transform:
-            translate(var(--x1),25vh)
-            rotate(120deg)
-            scale(.95);
-    }
-
-    50%{
-        transform:
-            translate(var(--x2),50vh)
-            rotate(240deg)
-            scale(.8);
-    }
-
-    75%{
-        transform:
-            translate(var(--x3),75vh)
-            rotate(360deg)
-            scale(.7);
-        opacity:.8;
-    }
-
-    100%{
-        transform:
-            translate(var(--x4),110vh)
-            rotate(520deg)
-            scale(.35);
+        transform:translate(0,0) rotate(0);
         opacity:0;
+    }
+    10%{opacity:1}
+    50%{
+        transform:translate(80px,50vh) rotate(180deg);
+    }
+    100%{
+        transform:translate(-70px,110vh) rotate(420deg);
+        opacity:.1;
     }
 }
 
-/* PREMA */
+/* ================= CATS ================= */
 
-.name{
+.cat{
     position:absolute;
-    left:50%;
-    top:45%;
-    transform:translate(-50%,-50%) scale(.2);
-    opacity:0;
-    font-size:clamp(55px,17vw,130px);
-    letter-spacing:12px;
-    font-weight:bold;
-    color:#f5fff0;
+    bottom:16%;
+    width:80px;
+    height:45px;
+    z-index:18;
+    animation:catWalk 12s linear infinite;
+}
 
-    text-shadow:
-        0 0 10px #b7e8a2,
-        0 0 30px #82c875,
-        0 0 70px #4f9c59,
-        0 0 120px rgba(100,220,120,.6);
+.catBody{
+    position:absolute;
+    width:55px;
+    height:30px;
+    background:#25232a;
+    border-radius:50%;
+    bottom:0;
+}
 
-    z-index:20;
+.catHead{
+    position:absolute;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#2e2b31;
+    right:0;
+    bottom:16px;
+}
+
+.ear{
+    position:absolute;
+    width:13px;
+    height:15px;
+    background:#2e2b31;
+    top:-7px;
+    transform:rotate(25deg);
+}
+
+.ear:first-child{left:3px}
+.ear:last-child{right:3px;transform:rotate(-25deg)}
+
+.eye{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#f9e5a3;
+    border-radius:50%;
+    top:13px;
+}
+
+.eye:first-child{left:8px}
+.eye:last-child{right:8px}
+
+.tail{
+    position:absolute;
+    width:35px;
+    height:30px;
+    border:6px solid #25232a;
+    border-right:0;
+    border-bottom:0;
+    border-radius:50%;
+    left:-20px;
+    bottom:13px;
+    transform:rotate(-25deg);
+}
+
+.cat1{left:8%;animation-delay:0s}
+.cat2{right:8%;transform:scale(.85);animation-delay:5s}
+
+@keyframes catWalk{
+    0%{transform:translateX(0)}
+    45%{transform:translateX(70px)}
+    50%{transform:translateX(70px) scaleX(-1)}
+    95%{transform:translateX(0) scaleX(-1)}
+    100%{transform:translateX(0)}
+}
+
+/* ================= FIREFLIES ================= */
+
+.fireflies{
+    position:absolute;
+    inset:0;
+    z-index:15;
     pointer-events:none;
 }
 
-.name.show{
-    animation:nameReveal 2.5s cubic-bezier(.2,.8,.2,1) forwards;
+.firefly{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#fff2a8;
+    box-shadow:0 0 15px 5px rgba(255,237,150,.4);
+    animation:fly 5s ease-in-out infinite;
 }
 
-@keyframes nameReveal{
+@keyframes fly{
+    0%,100%{transform:translate(0,0);opacity:.2}
+    50%{transform:translate(30px,-60px);opacity:1}
+}
+
+/* ================= MESSAGE ================= */
+
+.message{
+    position:absolute;
+    top:13%;
+    left:50%;
+    transform:translateX(-50%);
+    text-align:center;
+    z-index:50;
+    pointer-events:none;
+    width:100%;
+    opacity:0;
+}
+
+.message.show{
+    animation:messageIn 1.3s cubic-bezier(.17,.67,.35,1.3) forwards;
+}
+
+.message h1{
+    font-size:clamp(38px,11vw,75px);
+    color:#fff;
+    text-shadow:
+      0 0 10px #ffafd0,
+      0 0 30px rgba(255,140,190,.7);
+    letter-spacing:2px;
+}
+
+.message p{
+    margin-top:12px;
+    color:#ffe6f1;
+    font-size:clamp(15px,4vw,23px);
+    letter-spacing:2px;
+}
+
+@keyframes messageIn{
     0%{
         opacity:0;
-        transform:translate(-50%,-50%) scale(.2);
-        letter-spacing:30px;
-        filter:blur(15px);
+        transform:translateX(-50%) translateY(-35px) scale(.7);
     }
-
-    50%{
+    65%{
         opacity:1;
+        transform:translateX(-50%) translateY(5px) scale(1.08);
     }
-
     100%{
         opacity:1;
-        transform:translate(-50%,-50%) scale(1);
-        letter-spacing:12px;
-        filter:blur(0);
+        transform:translateX(-50%) translateY(0) scale(1);
     }
 }
 
-/* Glow after reveal */
+/* ================= START SCREEN ================= */
 
-.scene.revealed .tree{
-    filter:
-        drop-shadow(0 0 15px rgba(130,220,140,.2))
-        drop-shadow(0 0 35px rgba(100,190,120,.15));
+.start{
+    position:absolute;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(8,10,28,.35);
+    backdrop-filter:blur(2px);
+    transition:1s;
 }
 
-.scene.revealed .leaf{
-    background:linear-gradient(135deg,#477b52,#a6d98e);
+.start.hide{
+    opacity:0;
+    pointer-events:none;
 }
 
-/* Mobile */
+.startBox{
+    text-align:center;
+    color:white;
+}
+
+.startBox .heart{
+    font-size:65px;
+    animation:heartBeat 1.4s infinite;
+}
+
+.startBox h2{
+    font-size:30px;
+    text-shadow:0 0 15px #ffb7d7;
+}
+
+.startBox p{
+    margin-top:12px;
+    font-family:Arial,sans-serif;
+    opacity:.8;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    20%{transform:scale(1.2)}
+    40%{transform:scale(1)}
+}
+
+/* ================= HEART PARTICLES ================= */
+
+.heartParticle{
+    position:absolute;
+    z-index:70;
+    font-size:22px;
+    pointer-events:none;
+    animation:heartRise 2s ease-out forwards;
+}
+
+@keyframes heartRise{
+    from{
+        transform:translateY(0) scale(.5);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-170px) translateX(var(--x)) scale(1.4);
+        opacity:0;
+    }
+}
+
+/* mobile */
 
 @media(max-width:600px){
 
     .tree{
-        transform:scale(.82);
-        bottom:80px;
+        width:390px;
+        height:570px;
+        bottom:10%;
     }
 
-    .name{
-        font-size:18vw;
-        letter-spacing:7px;
+    .crown{
+        transform:translateX(-50%) scale(.82);
+        transform-origin:top center;
     }
 
-    button{
-        bottom:30px;
-        padding:14px 30px;
+    .trunk{
+        transform:translateX(-50%) scale(.85);
+        transform-origin:bottom;
+    }
+
+    .branch{
+        transform-origin:left center;
+    }
+
+    .moon{
+        width:70px;
+        height:70px;
+    }
+
+    .moon:after{
+        width:70px;
+        height:70px;
+    }
+
+    .cat{
+        bottom:15%;
     }
 }
 </style>
@@ -356,164 +567,261 @@ button:hover{
 
 <body>
 
-<div class="stars" id="stars"></div>
+<div class="scene">
 
-<div class="scene" id="scene">
+    <div class="stars" id="stars"></div>
+
+    <div class="moon"></div>
+
+    <div class="fireflies" id="fireflies"></div>
 
     <div class="ground"></div>
 
-    <div class="tree">
+    <div class="grass" id="grass"></div>
 
-        <div class="trunk"></div>
+    <!-- CATS -->
+
+    <div class="cat cat1">
+        <div class="catBody"></div>
+        <div class="catHead">
+            <div class="ear"></div>
+            <div class="ear"></div>
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+        <div class="tail"></div>
+    </div>
+
+    <div class="cat cat2">
+        <div class="catBody"></div>
+        <div class="catHead">
+            <div class="ear"></div>
+            <div class="ear"></div>
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+        <div class="tail"></div>
+    </div>
+
+    <!-- TREE -->
+
+    <div class="tree" id="tree">
+
+        <div class="crown">
+
+            <div class="blossom flower1"></div>
+            <div class="blossom flower2"></div>
+            <div class="blossom flower3"></div>
+            <div class="blossom flower4"></div>
+            <div class="blossom flower5"></div>
+            <div class="blossom flower6"></div>
+            <div class="blossom flower7"></div>
+            <div class="blossom flower8"></div>
+
+        </div>
 
         <div class="branch b1"></div>
         <div class="branch b2"></div>
         <div class="branch b3"></div>
         <div class="branch b4"></div>
-        <div class="branch b5"></div>
 
-        <div class="crown">
-
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-
-        </div>
+        <div class="trunk"></div>
 
     </div>
 
-    <div class="name" id="name">PREMA</div>
+    <!-- MESSAGE -->
 
-    <button id="btn">CLICK</button>
+    <div class="message" id="message">
+        <h1>Sorry Prema 🥺</h1>
+        <p>Mon theke bolchi... r rag koro na 💗</p>
+    </div>
+
+    <div class="petals" id="petals"></div>
+
+    <!-- START -->
+
+    <div class="start" id="start">
+        <div class="startBox">
+            <div class="heart">🌸</div>
+            <h2>Ekta chotto surprise...</h2>
+            <p>Tap kore shuru koro 🥺</p>
+        </div>
+    </div>
 
 </div>
 
 <script>
 
-/* Create stars */
+/* ================= STARS ================= */
 
 const stars = document.getElementById("stars");
 
-for(let i=0;i<90;i++){
+for(let i=0;i<70;i++){
 
     const s=document.createElement("div");
-
     s.className="star";
 
     s.style.left=Math.random()*100+"%";
-    s.style.top=Math.random()*100+"%";
+    s.style.top=Math.random()*70+"%";
 
-    s.style.animationDelay=(Math.random()*4)+"s";
+    s.style.animationDelay=(Math.random()*3)+"s";
 
     stars.appendChild(s);
 }
 
 
-/* Falling leaves */
+/* ================= GRASS ================= */
 
-const button=document.getElementById("btn");
-const name=document.getElementById("name");
-const scene=document.getElementById("scene");
+const grass=document.getElementById("grass");
 
-button.addEventListener("click",()=>{
+for(let i=0;i<90;i++){
 
-    /* prevent repeated clicks */
-    button.style.pointerEvents="none";
-    button.style.opacity=".25";
+    const blade=document.createElement("div");
+    blade.className="blade";
 
-    /* Create falling leaves */
+    blade.style.left=Math.random()*100+"%";
+    blade.style.height=(15+Math.random()*30)+"px";
+    blade.style.animationDelay=Math.random()*2+"s";
 
-    for(let i=0;i<55;i++){
+    grass.appendChild(blade);
+}
 
-        const leaf=document.createElement("div");
 
-        leaf.className="falling";
+/* ================= FIREFLIES ================= */
 
-        const startX =
-            50 +
-            (Math.random()*32-16);
+const fireflies=document.getElementById("fireflies");
 
-        leaf.style.left=startX+"%";
-        leaf.style.top=(15+Math.random()*35)+"%";
+for(let i=0;i<25;i++){
 
-        leaf.style.setProperty(
-            "--x1",
-            (Math.random()*160-80)+"px"
-        );
+    const f=document.createElement("div");
+    f.className="firefly";
 
-        leaf.style.setProperty(
-            "--x2",
-            (Math.random()*260-130)+"px"
-        );
+    f.style.left=Math.random()*100+"%";
+    f.style.top=(25+Math.random()*55)+"%";
 
-        leaf.style.setProperty(
-            "--x3",
-            (Math.random()*350-175)+"px"
-        );
+    f.style.animationDelay=Math.random()*5+"s";
 
-        leaf.style.setProperty(
-            "--x4",
-            (Math.random()*500-250)+"px"
-        );
+    fireflies.appendChild(f);
+}
 
-        leaf.style.animationDuration=
-            (4+Math.random()*3)+"s";
 
-        leaf.style.animationDelay=
-            (Math.random()*1.8)+"s";
+/* ================= PETAL EFFECT ================= */
 
-        leaf.style.transform=
-            "rotate("+(Math.random()*360)+"deg)";
+const petals=document.getElementById("petals");
+const message=document.getElementById("message");
+const tree=document.getElementById("tree");
+const start=document.getElementById("start");
 
-        document.body.appendChild(leaf);
+let activated=false;
 
-        setTimeout(()=>{
-            leaf.remove();
-        },8500);
-    }
+function createPetal(){
 
-    /* Hide tree leaves slowly */
+    const p=document.createElement("div");
 
-    document.querySelectorAll(".leaf").forEach((leaf,i)=>{
+    p.className="petal";
 
-        setTimeout(()=>{
+    p.style.left=(30+Math.random()*40)+"%";
 
-            leaf.style.transform +=
-                " translateY(18px)";
+    p.style.animationDuration=(3+Math.random()*4)+"s";
 
-            leaf.style.opacity=".25";
+    p.style.animationDelay=(Math.random()*1.5)+"s";
 
-        },i*45);
+    const size=8+Math.random()*12;
 
-    });
+    p.style.width=size+"px";
+    p.style.height=(size*.65)+"px";
 
-    /* Reveal PREMA */
+    petals.appendChild(p);
 
     setTimeout(()=>{
+        p.remove();
+    },8000);
+}
 
-        name.classList.add("show");
-        scene.classList.add("revealed");
 
-    },2200);
+/* ================= HEARTS ================= */
 
-});
+function createHeart(){
+
+    const h=document.createElement("div");
+
+    h.className="heartParticle";
+    h.innerHTML=["💗","💖","💕","🌸","✨"][Math.floor(Math.random()*5)];
+
+    h.style.left=(40+Math.random()*20)+"%";
+    h.style.top="50%";
+    h.style.setProperty("--x",(Math.random()*160-80)+"px");
+
+    document.querySelector(".scene").appendChild(h);
+
+    setTimeout(()=>{
+        h.remove();
+    },2000);
+}
+
+
+/* ================= TREE CLICK ================= */
+
+function activate(){
+
+    if(activated) return;
+
+    activated=true;
+
+    start.classList.add("hide");
+
+    message.classList.add("show");
+
+    /* lots of petals */
+
+    for(let i=0;i<90;i++){
+
+        setTimeout(()=>{
+            createPetal();
+        },i*45);
+
+    }
+
+    /* hearts */
+
+    for(let i=0;i<25;i++){
+
+        setTimeout(()=>{
+            createHeart();
+        },i*130);
+
+    }
+
+    /* continuous petals */
+
+    setInterval(()=>{
+        createPetal();
+    },450);
+
+}
+
+
+/* ================= START CLICK ================= */
+
+start.addEventListener("click",activate);
+
+
+/* ================= TREE CLICK ================= */
+
+tree.addEventListener("click",activate);
+
+
+/* ================= TOUCH ================= */
+
+document.addEventListener("touchstart",function(){
+
+    if(!activated){
+        activate();
+    }
+
+},{once:true});
 
 </script>
-</Xbody>
+
+</body>
 </html>
