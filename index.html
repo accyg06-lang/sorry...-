@@ -1,827 +1,364 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<title>Sorry Prema 🥺</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
-}
-
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    font-family:Georgia, "Times New Roman", serif;
-}
-
-body{
-    background:
-      radial-gradient(circle at 50% 20%, rgba(255,180,210,.18), transparent 30%),
-      linear-gradient(180deg,#10152d 0%,#20244b 42%,#302d50 70%,#17251f 100%);
-}
-
-/* ================= SKY ================= */
-
-.scene{
-    position:relative;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-}
-
-/* moon */
-
-.moon{
-    position:absolute;
-    width:95px;
-    height:95px;
-    border-radius:50%;
-    right:11%;
-    top:8%;
-    background:#fff5d6;
-    box-shadow:
-      0 0 20px rgba(255,245,214,.7),
-      0 0 70px rgba(255,220,180,.25);
-}
-
-.moon:after{
-    content:"";
-    position:absolute;
-    width:95px;
-    height:95px;
-    border-radius:50%;
-    left:-18px;
-    top:-8px;
-    background:#151a36;
-}
-
-/* stars */
-
-.stars{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-}
-
-.star{
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:#fff;
-    border-radius:50%;
-    box-shadow:0 0 8px white;
-    animation:twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-    from{opacity:.25;transform:scale(.7)}
-    to{opacity:1;transform:scale(1.5)}
-}
-
-/* ================= GROUND ================= */
-
-.ground{
-    position:absolute;
-    bottom:-18%;
-    left:-10%;
-    width:120%;
-    height:48%;
-    background:
-      radial-gradient(ellipse at center,
-      #34583c 0%,
-      #213d2c 45%,
-      #12271d 80%);
-    border-radius:50% 50% 0 0;
-    box-shadow:0 -20px 50px rgba(0,0,0,.25);
-}
-
-/* grass */
-
-.grass{
-    position:absolute;
-    bottom:10%;
-    width:100%;
-    height:100px;
-    pointer-events:none;
-}
-
-.blade{
-    position:absolute;
-    bottom:0;
-    width:2px;
-    height:25px;
-    background:#4f8652;
-    transform-origin:bottom;
-    animation:grassMove 2s ease-in-out infinite alternate;
-}
-
-@keyframes grassMove{
-    from{transform:rotate(-7deg)}
-    to{transform:rotate(8deg)}
-}
-
-/* ================= TREE ================= */
-
-.tree{
-    position:absolute;
-    left:50%;
-    bottom:11%;
-    width:500px;
-    height:650px;
-    transform:translateX(-50%);
-    cursor:pointer;
-    z-index:10;
-}
-
-.trunk{
-    position:absolute;
-    bottom:0;
-    left:47%;
-    width:62px;
-    height:390px;
-    transform:translateX(-50%);
-    background:
-      linear-gradient(90deg,
-      #3c211a,
-      #68402d 35%,
-      #7a4d33 55%,
-      #3a211a);
-    border-radius:40px 40px 10px 10px;
-    box-shadow:8px 0 15px rgba(0,0,0,.25);
-}
-
-.trunk:before,
-.trunk:after{
-    content:"";
-    position:absolute;
-    background:#4b2b20;
-    border-radius:50%;
-}
-
-.trunk:before{
-    width:25px;
-    height:250px;
-    left:-100px;
-    bottom:70px;
-    transform:rotate(52deg);
-}
-
-.trunk:after{
-    width:24px;
-    height:270px;
-    right:-100px;
-    bottom:100px;
-    transform:rotate(-52deg);
-}
-
-/* branches */
-
-.branch{
-    position:absolute;
-    height:28px;
-    background:#513022;
-    border-radius:30px;
-    transform-origin:left center;
-}
-
-.b1{
-    width:260px;
-    left:45%;
-    bottom:285px;
-    transform:rotate(-25deg);
-}
-
-.b2{
-    width:245px;
-    left:48%;
-    bottom:330px;
-    transform:rotate(27deg);
-}
-
-.b3{
-    width:210px;
-    left:44%;
-    bottom:390px;
-    transform:rotate(-42deg);
-}
-
-.b4{
-    width:210px;
-    left:48%;
-    bottom:415px;
-    transform:rotate(40deg);
-}
-
-/* ================= SAKURA CROWN ================= */
-
-.crown{
-    position:absolute;
-    width:500px;
-    height:410px;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-}
-
-.blossom{
-    position:absolute;
-    width:145px;
-    height:115px;
-    border-radius:50%;
-    background:
-      radial-gradient(circle at 30% 30%,#fff2fa 0 12%,transparent 13%),
-      radial-gradient(circle at 70% 30%,#ffd5e9 0 13%,transparent 14%),
-      radial-gradient(circle at 35% 70%,#ffc3df 0 14%,transparent 15%),
-      radial-gradient(circle at 70% 70%,#ffb4d6 0 12%,transparent 13%),
-      #e995bc;
-    filter:drop-shadow(0 10px 12px rgba(0,0,0,.2));
-    animation:softFloat 4s ease-in-out infinite;
-}
-
-.blossom:after{
-    content:"✿";
-    position:absolute;
-    color:#b75d83;
-    font-size:27px;
-    left:53px;
-    top:39px;
-    text-shadow:0 0 8px #fff;
-}
-
-@keyframes softFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-7px)}
-}
-
-.flower1{left:10px;top:80px}
-.flower2{left:125px;top:20px;transform:scale(1.15)}
-.flower3{left:260px;top:65px}
-.flower4{right:-5px;top:25px;transform:scale(1.1)}
-.flower5{left:75px;top:170px}
-.flower6{left:215px;top:145px;transform:scale(1.15)}
-.flower7{right:30px;top:170px}
-.flower8{left:175px;top:240px}
-
-/* ================= FALLING PETALS ================= */
-
-.petals{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    z-index:30;
-}
-
-.petal{
-    position:absolute;
-    top:-30px;
-    width:15px;
-    height:9px;
-    border-radius:100% 0 100% 0;
-    background:#ffb7d5;
-    opacity:.9;
-    animation:fall linear forwards;
-    box-shadow:0 0 8px rgba(255,180,215,.5);
-}
-
-@keyframes fall{
-    0%{
-        transform:translate(0,0) rotate(0);
-        opacity:0;
-    }
-    10%{opacity:1}
-    50%{
-        transform:translate(80px,50vh) rotate(180deg);
-    }
-    100%{
-        transform:translate(-70px,110vh) rotate(420deg);
-        opacity:.1;
-    }
-}
-
-/* ================= CATS ================= */
-
-.cat{
-    position:absolute;
-    bottom:16%;
-    width:80px;
-    height:45px;
-    z-index:18;
-    animation:catWalk 12s linear infinite;
-}
-
-.catBody{
-    position:absolute;
-    width:55px;
-    height:30px;
-    background:#25232a;
-    border-radius:50%;
-    bottom:0;
-}
-
-.catHead{
-    position:absolute;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    background:#2e2b31;
-    right:0;
-    bottom:16px;
-}
-
-.ear{
-    position:absolute;
-    width:13px;
-    height:15px;
-    background:#2e2b31;
-    top:-7px;
-    transform:rotate(25deg);
-}
-
-.ear:first-child{left:3px}
-.ear:last-child{right:3px;transform:rotate(-25deg)}
-
-.eye{
-    position:absolute;
-    width:4px;
-    height:4px;
-    background:#f9e5a3;
-    border-radius:50%;
-    top:13px;
-}
-
-.eye:first-child{left:8px}
-.eye:last-child{right:8px}
-
-.tail{
-    position:absolute;
-    width:35px;
-    height:30px;
-    border:6px solid #25232a;
-    border-right:0;
-    border-bottom:0;
-    border-radius:50%;
-    left:-20px;
-    bottom:13px;
-    transform:rotate(-25deg);
-}
-
-.cat1{left:8%;animation-delay:0s}
-.cat2{right:8%;transform:scale(.85);animation-delay:5s}
-
-@keyframes catWalk{
-    0%{transform:translateX(0)}
-    45%{transform:translateX(70px)}
-    50%{transform:translateX(70px) scaleX(-1)}
-    95%{transform:translateX(0) scaleX(-1)}
-    100%{transform:translateX(0)}
-}
-
-/* ================= FIREFLIES ================= */
-
-.fireflies{
-    position:absolute;
-    inset:0;
-    z-index:15;
-    pointer-events:none;
-}
-
-.firefly{
-    position:absolute;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:#fff2a8;
-    box-shadow:0 0 15px 5px rgba(255,237,150,.4);
-    animation:fly 5s ease-in-out infinite;
-}
-
-@keyframes fly{
-    0%,100%{transform:translate(0,0);opacity:.2}
-    50%{transform:translate(30px,-60px);opacity:1}
-}
-
-/* ================= MESSAGE ================= */
-
-.message{
-    position:absolute;
-    top:13%;
-    left:50%;
-    transform:translateX(-50%);
-    text-align:center;
-    z-index:50;
-    pointer-events:none;
-    width:100%;
-    opacity:0;
-}
-
-.message.show{
-    animation:messageIn 1.3s cubic-bezier(.17,.67,.35,1.3) forwards;
-}
-
-.message h1{
-    font-size:clamp(38px,11vw,75px);
-    color:#fff;
-    text-shadow:
-      0 0 10px #ffafd0,
-      0 0 30px rgba(255,140,190,.7);
-    letter-spacing:2px;
-}
-
-.message p{
-    margin-top:12px;
-    color:#ffe6f1;
-    font-size:clamp(15px,4vw,23px);
-    letter-spacing:2px;
-}
-
-@keyframes messageIn{
-    0%{
-        opacity:0;
-        transform:translateX(-50%) translateY(-35px) scale(.7);
-    }
-    65%{
-        opacity:1;
-        transform:translateX(-50%) translateY(5px) scale(1.08);
-    }
-    100%{
-        opacity:1;
-        transform:translateX(-50%) translateY(0) scale(1);
-    }
-}
-
-/* ================= START SCREEN ================= */
-
-.start{
-    position:absolute;
-    inset:0;
-    z-index:100;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(8,10,28,.35);
-    backdrop-filter:blur(2px);
-    transition:1s;
-}
-
-.start.hide{
-    opacity:0;
-    pointer-events:none;
-}
-
-.startBox{
-    text-align:center;
-    color:white;
-}
-
-.startBox .heart{
-    font-size:65px;
-    animation:heartBeat 1.4s infinite;
-}
-
-.startBox h2{
-    font-size:30px;
-    text-shadow:0 0 15px #ffb7d7;
-}
-
-.startBox p{
-    margin-top:12px;
-    font-family:Arial,sans-serif;
-    opacity:.8;
-}
-
-@keyframes heartBeat{
-    0%,100%{transform:scale(1)}
-    20%{transform:scale(1.2)}
-    40%{transform:scale(1)}
-}
-
-/* ================= HEART PARTICLES ================= */
-
-.heartParticle{
-    position:absolute;
-    z-index:70;
-    font-size:22px;
-    pointer-events:none;
-    animation:heartRise 2s ease-out forwards;
-}
-
-@keyframes heartRise{
-    from{
-        transform:translateY(0) scale(.5);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-170px) translateX(var(--x)) scale(1.4);
-        opacity:0;
-    }
-}
-
-/* mobile */
-
-@media(max-width:600px){
-
-    .tree{
-        width:390px;
-        height:570px;
-        bottom:10%;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorry Prema 🥺</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .crown{
-        transform:translateX(-50%) scale(.82);
-        transform-origin:top center;
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .trunk{
-        transform:translateX(-50%) scale(.85);
-        transform-origin:bottom;
+    /* Romantic Gradient Night Sky Background */
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .branch{
-        transform-origin:left center;
+    /* Moon */
+    .moon {
+      position: absolute;
+      top: 40px;
+      right: 50px;
+      width: 90px;
+      height: 90px;
+      background: radial-gradient(circle, #fffde4, #ffe39f);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(255, 253, 228, 0.8), 0 0 60px rgba(255, 227, 159, 0.4);
+      z-index: 1;
     }
 
-    .moon{
-        width:70px;
-        height:70px;
+    /* Canvas for Sakura Tree & Falling Petals */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: pointer;
     }
 
-    .moon:after{
-        width:70px;
-        height:70px;
+    /* Glowing Text Overlay */
+    .message-container {
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 10;
+      pointer-events: none;
     }
 
-    .cat{
-        bottom:15%;
+    .main-text {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff1493;
+      animation: pulse 2s infinite ease-in-out;
+      letter-spacing: 1.5px;
     }
-}
-</style>
+
+    .sub-text {
+      margin-top: 8px;
+      font-size: 1.2rem;
+      color: #ffe6f2;
+      text-shadow: 0 0 8px rgba(255, 182, 193, 0.8);
+      font-weight: 500;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+      }
+      50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493, 0 0 45px #ff69b4;
+      }
+    }
+
+    /* Hint text for interaction */
+    .hint {
+      position: absolute;
+      bottom: 15px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      z-index: 10;
+      pointer-events: none;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="scene">
-
-    <div class="stars" id="stars"></div>
-
+  <div class="container">
     <div class="moon"></div>
-
-    <div class="fireflies" id="fireflies"></div>
-
-    <div class="ground"></div>
-
-    <div class="grass" id="grass"></div>
-
-    <!-- CATS -->
-
-    <div class="cat cat1">
-        <div class="catBody"></div>
-        <div class="catHead">
-            <div class="ear"></div>
-            <div class="ear"></div>
-            <div class="eye"></div>
-            <div class="eye"></div>
-        </div>
-        <div class="tail"></div>
+    
+    <div class="message-container">
+      <div class="main-text">Sorry Prema 🥺</div>
+      <div class="sub-text">মন থেকে বলছি... আর রাগ করে থেকো না ❤️</div>
     </div>
 
-    <div class="cat cat2">
-        <div class="catBody"></div>
-        <div class="catHead">
-            <div class="ear"></div>
-            <div class="ear"></div>
-            <div class="eye"></div>
-            <div class="eye"></div>
-        </div>
-        <div class="tail"></div>
-    </div>
-
-    <!-- TREE -->
-
-    <div class="tree" id="tree">
-
-        <div class="crown">
-
-            <div class="blossom flower1"></div>
-            <div class="blossom flower2"></div>
-            <div class="blossom flower3"></div>
-            <div class="blossom flower4"></div>
-            <div class="blossom flower5"></div>
-            <div class="blossom flower6"></div>
-            <div class="blossom flower7"></div>
-            <div class="blossom flower8"></div>
-
-        </div>
-
-        <div class="branch b1"></div>
-        <div class="branch b2"></div>
-        <div class="branch b3"></div>
-        <div class="branch b4"></div>
-
-        <div class="trunk"></div>
-
-    </div>
-
-    <!-- MESSAGE -->
-
-    <div class="message" id="message">
-        <h1>Sorry Prema 🥺</h1>
-        <p>Mon theke bolchi... r rag koro na 💗</p>
-    </div>
-
-    <div class="petals" id="petals"></div>
-
-    <!-- START -->
-
-    <div class="start" id="start">
-        <div class="startBox">
-            <div class="heart">🌸</div>
-            <h2>Ekta chotto surprise...</h2>
-            <p>Tap kore shuru koro 🥺</p>
-        </div>
-    </div>
-
-</div>
-
-<script>
-
-/* ================= STARS ================= */
-
-const stars = document.getElementById("stars");
-
-for(let i=0;i<70;i++){
-
-    const s=document.createElement("div");
-    s.className="star";
-
-    s.style.left=Math.random()*100+"%";
-    s.style.top=Math.random()*70+"%";
-
-    s.style.animationDelay=(Math.random()*3)+"s";
-
-    stars.appendChild(s);
-}
-
-
-/* ================= GRASS ================= */
-
-const grass=document.getElementById("grass");
-
-for(let i=0;i<90;i++){
-
-    const blade=document.createElement("div");
-    blade.className="blade";
-
-    blade.style.left=Math.random()*100+"%";
-    blade.style.height=(15+Math.random()*30)+"px";
-    blade.style.animationDelay=Math.random()*2+"s";
-
-    grass.appendChild(blade);
-}
-
-
-/* ================= FIREFLIES ================= */
-
-const fireflies=document.getElementById("fireflies");
-
-for(let i=0;i<25;i++){
-
-    const f=document.createElement("div");
-    f.className="firefly";
-
-    f.style.left=Math.random()*100+"%";
-    f.style.top=(25+Math.random()*55)+"%";
-
-    f.style.animationDelay=Math.random()*5+"s";
-
-    fireflies.appendChild(f);
-}
-
-
-/* ================= PETAL EFFECT ================= */
-
-const petals=document.getElementById("petals");
-const message=document.getElementById("message");
-const tree=document.getElementById("tree");
-const start=document.getElementById("start");
-
-let activated=false;
-
-function createPetal(){
-
-    const p=document.createElement("div");
-
-    p.className="petal";
-
-    p.style.left=(30+Math.random()*40)+"%";
-
-    p.style.animationDuration=(3+Math.random()*4)+"s";
-
-    p.style.animationDelay=(Math.random()*1.5)+"s";
-
-    const size=8+Math.random()*12;
-
-    p.style.width=size+"px";
-    p.style.height=(size*.65)+"px";
-
-    petals.appendChild(p);
-
-    setTimeout(()=>{
-        p.remove();
-    },8000);
-}
-
-
-/* ================= HEARTS ================= */
-
-function createHeart(){
-
-    const h=document.createElement("div");
-
-    h.className="heartParticle";
-    h.innerHTML=["💗","💖","💕","🌸","✨"][Math.floor(Math.random()*5)];
-
-    h.style.left=(40+Math.random()*20)+"%";
-    h.style.top="50%";
-    h.style.setProperty("--x",(Math.random()*160-80)+"px");
-
-    document.querySelector(".scene").appendChild(h);
-
-    setTimeout(()=>{
-        h.remove();
-    },2000);
-}
-
-
-/* ================= TREE CLICK ================= */
-
-function activate(){
-
-    if(activated) return;
-
-    activated=true;
-
-    start.classList.add("hide");
-
-    message.classList.add("show");
-
-    /* lots of petals */
-
-    for(let i=0;i<90;i++){
-
-        setTimeout(()=>{
-            createPetal();
-        },i*45);
-
+    <canvas id="canvas"></canvas>
+    <div class="hint">🌸 গাছের উপরে ক্লিক করো সুন্দর পাপড়ি ঝরানোর জন্য 🌸</div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Petals collection
+    let petals = [];
+    let fireflies = [];
+
+    // Sakura Petal Class
+    class Petal {
+      constructor(x, y, speedX, speedY, size) {
+        this.x = x || Math.random() * width;
+        this.y = y || -10;
+        this.size = size || Math.random() * 8 + 6;
+        this.speedX = speedX || Math.random() * 1.5 - 0.75;
+        this.speedY = speedY || Math.random() * 1.5 + 1;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotSpeed = (Math.random() - 0.5) * 0.05;
+        this.color = `rgba(255, ${Math.floor(150 + Math.random() * 60)}, ${Math.floor(180 + Math.random() * 50)}, ${0.7 + Math.random() * 0.3})`;
+      }
+
+      update() {
+        this.x += this.speedX + Math.sin(this.y * 0.01) * 0.5;
+        this.y += this.speedY;
+        this.rotation += this.rotSpeed;
+
+        if (this.y > height + 20) {
+          this.y = -10;
+          this.x = Math.random() * width;
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        // Petal shape
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size, this.size, 0, this.size * 1.5);
+        ctx.bezierCurveTo(this.size, this.size, this.size, -this.size / 2, 0, 0);
+        ctx.fill();
+        ctx.restore();
+      }
     }
 
-    /* hearts */
+    // Firefly Class for Romantic Atmosphere
+    class Firefly {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 1;
+        this.alpha = Math.random();
+        this.speedAlpha = 0.02;
+      }
 
-    for(let i=0;i<25;i++){
+      update() {
+        this.alpha += this.speedAlpha;
+        if (this.alpha >= 1 || this.alpha <= 0) {
+          this.speedAlpha = -this.speedAlpha;
+        }
+      }
 
-        setTimeout(()=>{
-            createHeart();
-        },i*130);
-
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, this.alpha);
+        ctx.fillStyle = '#fffaaf';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#fffaaf';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
     }
 
-    /* continuous petals */
-
-    setInterval(()=>{
-        createPetal();
-    },450);
-
-}
-
-
-/* ================= START CLICK ================= */
-
-start.addEventListener("click",activate);
-
-
-/* ================= TREE CLICK ================= */
-
-tree.addEventListener("click",activate);
-
-
-/* ================= TOUCH ================= */
-
-document.addEventListener("touchstart",function(){
-
-    if(!activated){
-        activate();
+    // Initial Petals & Fireflies
+    for (let i = 0; i < 40; i++) {
+      petals.push(new Petal());
+    }
+    for (let i = 0; i < 25; i++) {
+      fireflies.push(new Firefly());
     }
 
-},{once:true});
+    // Draw Realistic Tree Structure (Recursive Fractal)
+    function drawBranch(x, y, len, angle, branchWidth) {
+      ctx.beginPath();
+      ctx.save();
+      ctx.lineWidth = branchWidth;
+      ctx.strokeStyle = '#2c1810';
+      ctx.fillStyle = '#2c1810';
+      ctx.lineCap = 'round';
+      ctx.translate(x, y);
+      ctx.rotate(angle * Math.PI / 180);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -len);
+      ctx.stroke();
 
-</script>
+      if (len < 10) {
+        // Draw Clusters of Blossoms
+        for (let i = 0; i < 5; i++) {
+          ctx.beginPath();
+          let blossomX = (Math.random() - 0.5) * 20;
+          let blossomY = -len + (Math.random() - 0.5) * 20;
+          let radius = Math.random() * 12 + 8;
+          let grad = ctx.createRadialGradient(blossomX, blossomY, 0, blossomX, blossomY, radius);
+          grad.addColorStop(0, 'rgba(255, 192, 203, 0.9)');
+          grad.addColorStop(0.7, 'rgba(255, 105, 180, 0.6)');
+          grad.addColorStop(1, 'rgba(255, 182, 193, 0)');
+          ctx.fillStyle = grad;
+          ctx.arc(blossomX, blossomY, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+        return;
+      }
 
+      // Branching
+      drawBranch(0, -len, len * 0.78, angle + 22, branchWidth * 0.7);
+      drawBranch(0, -len, len * 0.78, angle - 22, branchWidth * 0.7);
+      ctx.restore();
+    }
+
+    // Draw Grass Hill and Cute Cats
+    function drawForeground() {
+      // Hill Background
+      ctx.fillStyle = '#112211';
+      ctx.beginPath();
+      ctx.arc(width / 2, height + 400, width > 600 ? width * 0.8 : width * 1.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Grass Blade details
+      ctx.strokeStyle = '#1e3d1e';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < width; i += 8) {
+        ctx.beginPath();
+        ctx.moveTo(i, height - 20);
+        ctx.lineTo(i + (Math.random() * 10 - 5), height - 40 - Math.random() * 15);
+        ctx.stroke();
+      }
+
+      // Draw Cats under tree
+      drawCat(width * 0.38, height - 50, '#111111'); // Left Black Cat
+      drawCat(width * 0.62, height - 50, '#f0f0f0'); // Right White Cat
+    }
+
+    function drawCat(x, y, color) {
+      ctx.save();
+      ctx.fillStyle = color;
+      
+      // Body
+      ctx.beginPath();
+      ctx.ellipse(x, y, 16, 22, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Head
+      ctx.beginPath();
+      ctx.arc(x, y - 24, 12, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Ears
+      ctx.beginPath();
+      ctx.moveTo(x - 10, y - 30);
+      ctx.lineTo(x - 4, y - 40);
+      ctx.lineTo(x - 2, y - 30);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(x + 10, y - 30);
+      ctx.lineTo(x + 4, y - 40);
+      ctx.lineTo(x + 2, y - 30);
+      ctx.fill();
+
+      // Glowing Eyes
+      ctx.fillStyle = '#ffe600';
+      ctx.beginPath();
+      ctx.arc(x - 4, y - 25, 2, 0, Math.PI * 2);
+      ctx.arc(x + 4, y - 25, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Tail
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(x, y + 15);
+      ctx.quadraticCurveTo(x + 20, y + 10, x + 15, y - 5);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+
+    // Animation Loop
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. Draw Foreground (Hill & Cats)
+      drawForeground();
+
+      // 2. Draw Sakura Tree
+      let treeBaseX = width / 2;
+      let treeBaseY = height - 40;
+      let treeHeight = Math.min(height * 0.22, 130);
+      drawBranch(treeBaseX, treeBaseY, treeHeight, 0, 16);
+
+      // 3. Update & Draw Fireflies
+      fireflies.forEach(f => {
+        f.update();
+        f.draw();
+      });
+
+      // 4. Update & Draw Petals
+      petals.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Click Event: Trigger Sakura Explosion on Click!
+    window.addEventListener('click', (e) => {
+      let clickX = e.clientX;
+      let clickY = e.clientY;
+
+      for (let i = 0; i < 25; i++) {
+        let speedX = (Math.random() - 0.5) * 6;
+        let speedY = Math.random() * 3 + 1;
+        petals.push(new Petal(clickX, clickY, speedX, speedY));
+      }
+    });
+  </script>
 </body>
 </html>
+
