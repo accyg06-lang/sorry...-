@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>একটা ছোট্ট কথা 🤍</title>
+<title>PREMA</title>
 
 <style>
 *{
@@ -14,375 +14,506 @@
 }
 
 body{
-    min-height:100vh;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#120c1c,#24122d,#101522);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     overflow:hidden;
+    height:100vh;
+    background:
+        radial-gradient(circle at 50% 45%, #162b2b 0%, #071313 45%, #020606 100%);
+    font-family:Georgia, serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
 }
 
-/* Background glow */
-body::before{
-    content:"";
+/* Stars */
+
+.stars{
     position:fixed;
-    width:300px;
-    height:300px;
-    background:#ff6fae;
-    filter:blur(120px);
-    opacity:.25;
-    top:-80px;
-    left:-80px;
+    inset:0;
+    pointer-events:none;
 }
 
-body::after{
-    content:"";
-    position:fixed;
-    width:300px;
-    height:300px;
-    background:#8c7bff;
-    filter:blur(120px);
-    opacity:.2;
-    bottom:-80px;
-    right:-80px;
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:.6;
+    animation:twinkle 3s infinite alternate;
 }
 
-/* Main card */
-.container{
-    width:90%;
-    max-width:430px;
-    text-align:center;
+@keyframes twinkle{
+    from{opacity:.15; transform:scale(.7)}
+    to{opacity:1; transform:scale(1.4)}
+}
+
+/* Main scene */
+
+.scene{
     position:relative;
-    z-index:2;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.screen{
-    display:none;
-    animation:fade .8s ease;
+/* Ground */
+
+.ground{
+    position:absolute;
+    bottom:-110px;
+    width:500px;
+    height:220px;
+    background:radial-gradient(ellipse,#142b24 0%,transparent 70%);
+    filter:blur(8px);
 }
 
-.screen.active{
-    display:block;
+/* Tree */
+
+.tree{
+    position:absolute;
+    bottom:80px;
+    width:330px;
+    height:570px;
 }
 
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+/* Trunk */
+
+.trunk{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:55px;
+    height:370px;
+    background:
+        linear-gradient(90deg,
+        #21130e,
+        #4a2919,
+        #70422a,
+        #351d13,
+        #1b100c);
+    border-radius:45% 55% 15% 15%;
+    box-shadow:
+        0 0 25px rgba(120,75,40,.35);
 }
 
-.small{
-    color:#d8cce5;
-    font-size:14px;
-    margin-bottom:18px;
+/* Branches */
+
+.branch{
+    position:absolute;
+    height:18px;
+    background:#412619;
+    border-radius:30px;
+    transform-origin:left center;
 }
 
-h1{
-    font-size:31px;
-    line-height:1.35;
-    margin-bottom:18px;
+.b1{
+    width:170px;
+    left:150px;
+    bottom:275px;
+    transform:rotate(-32deg);
 }
 
-p{
-    color:#ddd5e5;
-    line-height:1.8;
-    font-size:16px;
+.b2{
+    width:150px;
+    left:150px;
+    bottom:225px;
+    transform:rotate(28deg);
 }
+
+.b3{
+    width:125px;
+    left:115px;
+    bottom:315px;
+    transform:rotate(-58deg);
+}
+
+.b4{
+    width:130px;
+    left:75px;
+    bottom:250px;
+    transform:rotate(145deg);
+}
+
+.b5{
+    width:115px;
+    left:165px;
+    bottom:180px;
+    transform:rotate(-15deg);
+}
+
+/* Tree crown */
+
+.crown{
+    position:absolute;
+    left:50%;
+    top:25px;
+    transform:translateX(-50%);
+    width:330px;
+    height:310px;
+}
+
+/* Leaves */
+
+.leaf{
+    position:absolute;
+    width:42px;
+    height:23px;
+    border-radius:100% 0 100% 0;
+    background:linear-gradient(135deg,#315d48,#75a96e);
+    transform:rotate(45deg);
+    box-shadow:
+        0 0 12px rgba(116,190,130,.25);
+    transition:1s;
+}
+
+.leaf:nth-child(1){left:135px;top:10px}
+.leaf:nth-child(2){left:90px;top:30px;transform:rotate(10deg)}
+.leaf:nth-child(3){left:180px;top:35px;transform:rotate(75deg)}
+.leaf:nth-child(4){left:45px;top:75px;transform:rotate(25deg)}
+.leaf:nth-child(5){left:130px;top:65px;transform:rotate(70deg)}
+.leaf:nth-child(6){left:220px;top:80px;transform:rotate(15deg)}
+.leaf:nth-child(7){left:15px;top:125px;transform:rotate(70deg)}
+.leaf:nth-child(8){left:75px;top:120px;transform:rotate(5deg)}
+.leaf:nth-child(9){left:160px;top:115px;transform:rotate(50deg)}
+.leaf:nth-child(10){left:245px;top:135px;transform:rotate(90deg)}
+.leaf:nth-child(11){left:45px;top:175px;transform:rotate(10deg)}
+.leaf:nth-child(12){left:115px;top:175px;transform:rotate(75deg)}
+.leaf:nth-child(13){left:195px;top:175px;transform:rotate(15deg)}
+.leaf:nth-child(14){left:270px;top:185px;transform:rotate(65deg)}
+.leaf:nth-child(15){left:85px;top:225px;transform:rotate(35deg)}
+.leaf:nth-child(16){left:155px;top:230px;transform:rotate(80deg)}
+.leaf:nth-child(17){left:225px;top:220px;transform:rotate(25deg)}
+.leaf:nth-child(18){left:125px;top:270px;transform:rotate(30deg)}
+.leaf:nth-child(19){left:195px;top:270px;transform:rotate(75deg)}
+
+/* Button */
 
 button{
-    margin-top:28px;
-    padding:13px 28px;
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:15px 38px;
     border:none;
-    border-radius:30px;
-    background:linear-gradient(135deg,#ff78ad,#a98bff);
+    border-radius:50px;
+    background:rgba(255,255,255,.08);
     color:white;
-    font-size:16px;
+    border:1px solid rgba(255,255,255,.3);
+    backdrop-filter:blur(12px);
+    font-size:15px;
+    letter-spacing:3px;
     cursor:pointer;
-    box-shadow:0 8px 25px rgba(255,100,170,.25);
-    transition:.25s;
+    box-shadow:
+        0 0 25px rgba(130,255,180,.12);
+    transition:.4s;
 }
 
 button:hover{
-    transform:scale(1.05);
+    background:rgba(255,255,255,.15);
+    box-shadow:
+        0 0 35px rgba(130,255,180,.3);
+    transform:translateX(-50%) scale(1.05);
 }
 
-.heart{
-    font-size:65px;
-    margin-bottom:15px;
-    animation:beat 1.5s infinite;
-}
+/* Falling leaves */
 
-@keyframes beat{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.15)}
-}
-
-/* Message card */
-.message{
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.12);
-    backdrop-filter:blur(15px);
-    padding:25px;
-    border-radius:25px;
-    margin-top:20px;
-    text-align:left;
-}
-
-.message p{
-    color:#eee;
-}
-
-/* Floating hearts */
-.floating{
+.falling{
     position:fixed;
-    bottom:-30px;
-    font-size:20px;
-    animation:floatUp 6s linear forwards;
-    opacity:.7;
-    z-index:1;
+    width:18px;
+    height:10px;
+    border-radius:100% 0 100% 0;
+    background:linear-gradient(135deg,#719f63,#b0d98a);
+    pointer-events:none;
+    animation:fall linear forwards;
+    z-index:10;
+    box-shadow:0 0 10px rgba(140,220,150,.35);
 }
 
-@keyframes floatUp{
+@keyframes fall{
     0%{
-        transform:translateY(0) rotate(0);
-        opacity:0;
+        transform:
+            translate(0,0)
+            rotate(0deg)
+            scale(1);
+        opacity:1;
     }
-    15%{
+
+    25%{
+        transform:
+            translate(var(--x1),25vh)
+            rotate(120deg)
+            scale(.95);
+    }
+
+    50%{
+        transform:
+            translate(var(--x2),50vh)
+            rotate(240deg)
+            scale(.8);
+    }
+
+    75%{
+        transform:
+            translate(var(--x3),75vh)
+            rotate(360deg)
+            scale(.7);
         opacity:.8;
     }
+
     100%{
-        transform:translateY(-110vh) rotate(360deg);
+        transform:
+            translate(var(--x4),110vh)
+            rotate(520deg)
+            scale(.35);
         opacity:0;
     }
 }
 
-.signature{
-    margin-top:20px;
-    color:#ffb6d2;
-    font-size:14px;
+/* PREMA */
+
+.name{
+    position:absolute;
+    left:50%;
+    top:45%;
+    transform:translate(-50%,-50%) scale(.2);
+    opacity:0;
+    font-size:clamp(55px,17vw,130px);
+    letter-spacing:12px;
+    font-weight:bold;
+    color:#f5fff0;
+
+    text-shadow:
+        0 0 10px #b7e8a2,
+        0 0 30px #82c875,
+        0 0 70px #4f9c59,
+        0 0 120px rgba(100,220,120,.6);
+
+    z-index:20;
+    pointer-events:none;
 }
 
-.final{
-    font-size:36px;
-    margin-bottom:15px;
+.name.show{
+    animation:nameReveal 2.5s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes nameReveal{
+    0%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.2);
+        letter-spacing:30px;
+        filter:blur(15px);
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+        letter-spacing:12px;
+        filter:blur(0);
+    }
+}
+
+/* Glow after reveal */
+
+.scene.revealed .tree{
+    filter:
+        drop-shadow(0 0 15px rgba(130,220,140,.2))
+        drop-shadow(0 0 35px rgba(100,190,120,.15));
+}
+
+.scene.revealed .leaf{
+    background:linear-gradient(135deg,#477b52,#a6d98e);
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .tree{
+        transform:scale(.82);
+        bottom:80px;
+    }
+
+    .name{
+        font-size:18vw;
+        letter-spacing:7px;
+    }
+
+    button{
+        bottom:30px;
+        padding:14px 30px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="stars" id="stars"></div>
 
-    <!-- SCREEN 1 -->
-    <div class="screen active" id="screen1">
+<div class="scene" id="scene">
 
-        <div class="heart">🤍</div>
+    <div class="ground"></div>
 
-        <div class="small">একটু সময় দাও...</div>
+    <div class="tree">
 
-        <h1>তোমার জন্য<br>একটা ছোট্ট জিনিস বানিয়েছি</h1>
+        <div class="trunk"></div>
 
-        <p>
-            বেশি কিছু না।<br>
-            শুধু মন দিয়ে একবার দেখো।
-        </p>
+        <div class="branch b1"></div>
+        <div class="branch b2"></div>
+        <div class="branch b3"></div>
+        <div class="branch b4"></div>
+        <div class="branch b5"></div>
 
-        <button onclick="nextScreen(2)">
-            Open করো 🤍
-        </button>
+        <div class="crown">
 
-    </div>
-
-
-    <!-- SCREEN 2 -->
-    <div class="screen" id="screen2">
-
-        <div class="small">শোনো...</div>
-
-        <h1 id="typing"></h1>
-
-        <button onclick="nextScreen(3)">
-            Continue →
-        </button>
-
-    </div>
-
-
-    <!-- SCREEN 3 -->
-    <div class="screen" id="screen3">
-
-        <div class="heart">🥺</div>
-
-        <h1>একটা কথা বলি?</h1>
-
-        <div class="message">
-
-            <p>
-                রাগ করে থেকো না প্লিজ। 🤍
-                <br><br>
-
-                আমি হয়তো সবসময় ঠিকভাবে
-                আমার কথাগুলো বোঝাতে পারি না।
-                কখনো ভুলও হয়ে যায়।
-                <br><br>
-
-                কিন্তু ইচ্ছা করে তোমার মন খারাপ
-                করাটা কখনোই চাই না।
-                <br><br>
-
-                তাই একটা ছোট্ট <b>Sorry</b> রেখে গেলাম। 🫶
-            </p>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
 
         </div>
 
-        <button onclick="nextScreen(4)">
-            আরেকটা কথা আছে...
-        </button>
-
     </div>
 
+    <div class="name" id="name">PREMA</div>
 
-    <!-- SCREEN 4 -->
-    <div class="screen" id="screen4">
-
-        <div class="heart">🌸</div>
-
-        <h1>রাগটা একটু কমেছে?</h1>
-
-        <p>
-            পুরোপুরি না কমলেও সমস্যা নেই। 😅
-            <br>
-            অন্তত একটু হাসো।
-        </p>
-
-        <button onclick="nextScreen(5)">
-            এইটা দেখো 🤍
-        </button>
-
-    </div>
-
-
-    <!-- FINAL -->
-    <div class="screen" id="screen5">
-
-        <div class="final">🫶</div>
-
-        <h1>এই তো...</h1>
-
-        <p>
-            তোমার হাসিটাই ভালো লাগে।
-            <br><br>
-            তাই আর বেশি রাগ করে থেকো না।
-            🤍
-        </p>
-
-        <div class="signature">
-            — তোমার জন্য বানানো একটা ছোট্ট page
-        </div>
-
-    </div>
+    <button id="btn">CLICK</button>
 
 </div>
 
-
 <script>
 
-/* Screen change */
-function nextScreen(number){
+/* Create stars */
 
-    document.querySelectorAll(".screen")
-    .forEach(screen => {
-        screen.classList.remove("active");
+const stars = document.getElementById("stars");
+
+for(let i=0;i<90;i++){
+
+    const s=document.createElement("div");
+
+    s.className="star";
+
+    s.style.left=Math.random()*100+"%";
+    s.style.top=Math.random()*100+"%";
+
+    s.style.animationDelay=(Math.random()*4)+"s";
+
+    stars.appendChild(s);
+}
+
+
+/* Falling leaves */
+
+const button=document.getElementById("btn");
+const name=document.getElementById("name");
+const scene=document.getElementById("scene");
+
+button.addEventListener("click",()=>{
+
+    /* prevent repeated clicks */
+    button.style.pointerEvents="none";
+    button.style.opacity=".25";
+
+    /* Create falling leaves */
+
+    for(let i=0;i<55;i++){
+
+        const leaf=document.createElement("div");
+
+        leaf.className="falling";
+
+        const startX =
+            50 +
+            (Math.random()*32-16);
+
+        leaf.style.left=startX+"%";
+        leaf.style.top=(15+Math.random()*35)+"%";
+
+        leaf.style.setProperty(
+            "--x1",
+            (Math.random()*160-80)+"px"
+        );
+
+        leaf.style.setProperty(
+            "--x2",
+            (Math.random()*260-130)+"px"
+        );
+
+        leaf.style.setProperty(
+            "--x3",
+            (Math.random()*350-175)+"px"
+        );
+
+        leaf.style.setProperty(
+            "--x4",
+            (Math.random()*500-250)+"px"
+        );
+
+        leaf.style.animationDuration=
+            (4+Math.random()*3)+"s";
+
+        leaf.style.animationDelay=
+            (Math.random()*1.8)+"s";
+
+        leaf.style.transform=
+            "rotate("+(Math.random()*360)+"deg)";
+
+        document.body.appendChild(leaf);
+
+        setTimeout(()=>{
+            leaf.remove();
+        },8500);
+    }
+
+    /* Hide tree leaves slowly */
+
+    document.querySelectorAll(".leaf").forEach((leaf,i)=>{
+
+        setTimeout(()=>{
+
+            leaf.style.transform +=
+                " translateY(18px)";
+
+            leaf.style.opacity=".25";
+
+        },i*45);
+
     });
 
-    document.getElementById("screen"+number)
-    .classList.add("active");
-
-    if(number === 2){
-        startTyping();
-    }
-}
-
-
-/* Typing effect */
-function startTyping(){
-
-    let text =
-    "তুমি রাগ করলে একটা জিনিস বুঝি...";
-
-    let second =
-    "তোমাকে হাসানো যতটা সহজ মনে হয়,\nততটা সহজ না। 🥺";
-
-    let element=document.getElementById("typing");
-
-    element.innerHTML="";
-
-    let i=0;
-
-    function type(){
-
-        if(i < text.length){
-
-            element.innerHTML += text.charAt(i);
-
-            i++;
-
-            setTimeout(type,55);
-
-        }else{
-
-            setTimeout(()=>{
-
-                element.innerHTML =
-                text + "<br><br>" + second.replace(/\n/g,"<br>");
-
-            },500);
-
-        }
-    }
-
-    type();
-}
-
-
-/* Floating hearts */
-function createHeart(){
-
-    const heart=document.createElement("div");
-
-    heart.className="floating";
-
-    const hearts=["🤍","💗","💖","🌸","✨","🫶"];
-
-    heart.innerHTML =
-    hearts[Math.floor(Math.random()*hearts.length)];
-
-    heart.style.left =
-    Math.random()*100+"vw";
-
-    heart.style.fontSize =
-    (15+Math.random()*20)+"px";
-
-    heart.style.animationDuration =
-    (4+Math.random()*4)+"s";
-
-    document.body.appendChild(heart);
+    /* Reveal PREMA */
 
     setTimeout(()=>{
-        heart.remove();
-    },8000);
-}
 
-setInterval(createHeart,700);
+        name.classList.add("show");
+        scene.classList.add("revealed");
+
+    },2200);
+
+});
 
 </script>
-
-</body>
+</Xbody>
 </html>
