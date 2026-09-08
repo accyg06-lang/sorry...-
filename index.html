@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>একটা ছোট্ট কথা 🤍</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#120c1c,#24122d,#101522);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* Background glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#ff6fae;
+    filter:blur(120px);
+    opacity:.25;
+    top:-80px;
+    left:-80px;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#8c7bff;
+    filter:blur(120px);
+    opacity:.2;
+    bottom:-80px;
+    right:-80px;
+}
+
+/* Main card */
+.container{
+    width:90%;
+    max-width:430px;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.screen{
+    display:none;
+    animation:fade .8s ease;
+}
+
+.screen.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.small{
+    color:#d8cce5;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:31px;
+    line-height:1.35;
+    margin-bottom:18px;
+}
+
+p{
+    color:#ddd5e5;
+    line-height:1.8;
+    font-size:16px;
+}
+
+button{
+    margin-top:28px;
+    padding:13px 28px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#ff78ad,#a98bff);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(255,100,170,.25);
+    transition:.25s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.heart{
+    font-size:65px;
+    margin-bottom:15px;
+    animation:beat 1.5s infinite;
+}
+
+@keyframes beat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+}
+
+/* Message card */
+.message{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    padding:25px;
+    border-radius:25px;
+    margin-top:20px;
+    text-align:left;
+}
+
+.message p{
+    color:#eee;
+}
+
+/* Floating hearts */
+.floating{
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    animation:floatUp 6s linear forwards;
+    opacity:.7;
+    z-index:1;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    15%{
+        opacity:.8;
+    }
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.signature{
+    margin-top:20px;
+    color:#ffb6d2;
+    font-size:14px;
+}
+
+.final{
+    font-size:36px;
+    margin-bottom:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SCREEN 1 -->
+    <div class="screen active" id="screen1">
+
+        <div class="heart">🤍</div>
+
+        <div class="small">একটু সময় দাও...</div>
+
+        <h1>তোমার জন্য<br>একটা ছোট্ট জিনিস বানিয়েছি</h1>
+
+        <p>
+            বেশি কিছু না।<br>
+            শুধু মন দিয়ে একবার দেখো।
+        </p>
+
+        <button onclick="nextScreen(2)">
+            Open করো 🤍
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 2 -->
+    <div class="screen" id="screen2">
+
+        <div class="small">শোনো...</div>
+
+        <h1 id="typing"></h1>
+
+        <button onclick="nextScreen(3)">
+            Continue →
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 3 -->
+    <div class="screen" id="screen3">
+
+        <div class="heart">🥺</div>
+
+        <h1>একটা কথা বলি?</h1>
+
+        <div class="message">
+
+            <p>
+                রাগ করে থেকো না প্লিজ। 🤍
+                <br><br>
+
+                আমি হয়তো সবসময় ঠিকভাবে
+                আমার কথাগুলো বোঝাতে পারি না।
+                কখনো ভুলও হয়ে যায়।
+                <br><br>
+
+                কিন্তু ইচ্ছা করে তোমার মন খারাপ
+                করাটা কখনোই চাই না।
+                <br><br>
+
+                তাই একটা ছোট্ট <b>Sorry</b> রেখে গেলাম। 🫶
+            </p>
+
+        </div>
+
+        <button onclick="nextScreen(4)">
+            আরেকটা কথা আছে...
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 4 -->
+    <div class="screen" id="screen4">
+
+        <div class="heart">🌸</div>
+
+        <h1>রাগটা একটু কমেছে?</h1>
+
+        <p>
+            পুরোপুরি না কমলেও সমস্যা নেই। 😅
+            <br>
+            অন্তত একটু হাসো।
+        </p>
+
+        <button onclick="nextScreen(5)">
+            এইটা দেখো 🤍
+        </button>
+
+    </div>
+
+
+    <!-- FINAL -->
+    <div class="screen" id="screen5">
+
+        <div class="final">🫶</div>
+
+        <h1>এই তো...</h1>
+
+        <p>
+            তোমার হাসিটাই ভালো লাগে।
+            <br><br>
+            তাই আর বেশি রাগ করে থেকো না।
+            🤍
+        </p>
+
+        <div class="signature">
+            — তোমার জন্য বানানো একটা ছোট্ট page
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* Screen change */
+function nextScreen(number){
+
+    document.querySelectorAll(".screen")
+    .forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById("screen"+number)
+    .classList.add("active");
+
+    if(number === 2){
+        startTyping();
+    }
+}
+
+
+/* Typing effect */
+function startTyping(){
+
+    let text =
+    "তুমি রাগ করলে একটা জিনিস বুঝি...";
+
+    let second =
+    "তোমাকে হাসানো যতটা সহজ মনে হয়,\nততটা সহজ না। 🥺";
+
+    let element=document.getElementById("typing");
+
+    element.innerHTML="";
+
+    let i=0;
+
+    function type(){
+
+        if(i < text.length){
+
+            element.innerHTML += text.charAt(i);
+
+            i++;
+
+            setTimeout(type,55);
+
+        }else{
+
+            setTimeout(()=>{
+
+                element.innerHTML =
+                text + "<br><br>" + second.replace(/\n/g,"<br>");
+
+            },500);
+
+        }
+    }
+
+    type();
+}
+
+
+/* Floating hearts */
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="floating";
+
+    const hearts=["🤍","💗","💖","🌸","✨","🫶"];
+
+    heart.innerHTML =
+    hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+    Math.random()*100+"vw";
+
+    heart.style.fontSize =
+    (15+Math.random()*20)+"px";
+
+    heart.style.animationDuration =
+    (4+Math.random()*4)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,700);
+
+</script>
+
+</body>
+</html>
